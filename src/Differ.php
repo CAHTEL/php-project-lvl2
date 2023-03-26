@@ -8,8 +8,6 @@ function genDiff($file1, $file2)
     $data2 = file_get_contents($file2, true);
     $firstFile = json_decode($data1, true);
     $secondFile = json_decode($data2, true);
-    var_dump($data1, $data2);
-    Exit;
     $data = array_merge($firstFile, $secondFile);
     ksort($data);
     $result = [];
