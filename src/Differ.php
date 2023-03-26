@@ -11,18 +11,18 @@ function genDiff($file1, $file2)
     $data = array_merge($firstFile, $secondFile);
     ksort($data);
     $result = [];
-    foreach($data as $key => $value) {
-        if(array_key_exists($key, $firstFile) && !array_key_exists($key, $secondFile)) {
+    foreach ($data as $key => $value) {
+        if (array_key_exists($key, $firstFile) && !array_key_exists($key, $secondFile)) {
             $result["-" . $key] = $value;
         }
-        if(array_key_exists($key, $firstFile) && array_key_exists($key, $secondFile) && $firstFile[$key] === $secondFile[$key]) {
+        if (array_key_exists($key, $firstFile) && array_key_exists($key, $secondFile) && $firstFile[$key] === $secondFile[$key]) {
             $result[" " . $key] = $value;
         }
-        if(array_key_exists($key, $firstFile) && array_key_exists($key, $secondFile) && $firstFile[$key] !== $secondFile[$key]) {
+        if (array_key_exists($key, $firstFile) && array_key_exists($key, $secondFile) && $firstFile[$key] !== $secondFile[$key]) {
             $result["-" . $key] = $firstFile[$key];
             $result["+" . $key] = $secondFile[$key];
         }
-        if(array_key_exists($key, $secondFile) && !array_key_exists($key, $firstFile)) {
+        if (array_key_exists($key, $secondFile) && !array_key_exists($key, $firstFile)) {
             $result["+" . $key] = $value;
         }
     }
